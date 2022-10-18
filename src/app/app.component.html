@@ -3,31 +3,31 @@
 
   <div class="cards-container">  
     <div class="cards-form">  
-      <form>
+      <form #form="ngForm" (ngSubmit) = "onSubmit()">
         <div class="form-group">  
           <label for="">Card Name</label>
-          <input type="text" name="cardName">
+          <input type="text" name="cardName" [(ngModel)] = "card.cardholderName">
         </div>
 
         <div class="form-group">  
           <label for="">Card Number</label>
-          <input type="text" name="cardNumber">
+          <input type="text" name="cardNumber" [(ngModel)] = "card.cardNumber">
         </div>
 
-        <div class="form-group form-group-inline">  
+        <div class="form-group form-group-inline" >  
           <div>
             <label for="">CVC</label>
-            <input type="text" name="cvc">
+            <input type="text" name="cvc" [(ngModel)] = "card.cvc">
           </div>
 
           <div>
             <label for="">Expiry Month</label>
-            <input type="text" name="expiryMonth">
+            <input type="text" name="expiryMonth" [(ngModel)] = "card.expiryMonth">
           </div>
 
           <div>
             <label for="">Expiry Year</label>
-            <input type="text" name="expiryYear">
+            <input type="text" name="expiryYear" [(ngModel)] = "card.expiryYear">
           </div>
         </div>
         <div class="form-group">  
@@ -36,7 +36,19 @@
       </form>
     </div>
     <div class="cards-grid">  
-      <div class="card-row">  
+
+      <div class="card-row" *ngFor="let card of cards">  
+        <div class="card-row-details"  (click)="populateForm(card)">  
+          <span>{{ card.cardholderName }}</span>
+          <span>{{ card.cardNumber }}</span>
+        </div>
+        <div class="card-row-action">  
+          <a (click)="deletCard(card.id)"> <i class="fa fa-trash" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+
+      <!-- <div class="card-row">  
         <div class="card-row-details">  
           <span>Christopher</span>
           <span>9688890</span>
@@ -44,7 +56,7 @@
         <div class="card-row-action">  
           <a > <i class="fa fa-trash" aria-hidden="true"></i></a>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>

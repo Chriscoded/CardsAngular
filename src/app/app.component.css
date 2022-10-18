@@ -91,4 +91,8 @@ form button{
 
 .card-row-action a{
     display: block;
+    cursor: pointer;
+    padding: 1em;
+    background-color: #EF5350;
+    color: white;
 }
