@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
   constructor(private cardsService: CardsService){
 
   }
-  //call this functions when the page
+  //call this functions when the page loads
   ngOnInit(): void {
     this.getAllCards();
   }
@@ -47,6 +47,7 @@ export class AppComponent implements OnInit {
       .subscribe(
         response => {
           console.log(response);
+          this.getAllCards();
   
            //clear form
            this.card ={
